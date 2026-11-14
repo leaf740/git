@@ -52,6 +52,8 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/../BSP/src/stm32_hal_ports.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/../BSP/boards/stm32f103c8t6/board.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/../Module/src/i2c_register_device.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/../Module/src/mpu6050.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/../Module/src/sg90_servo.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/../Application/src/main.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/../Application/src/freertos_app.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/Third_Party/FreeRTOS/Source/tasks.c
