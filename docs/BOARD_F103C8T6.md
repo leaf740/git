@@ -23,6 +23,6 @@ cmake --build build/f103-debug
 
 ## 当前限制
 
-这个 .ioc 只启用 USART1、GPIO、RCC、SYS；TIM4 只作为 HAL 时基。没有 CAN、I2C、FreeRTOS task 配置，也没有采购器件的具体型号。不要把当前阶段描述成 CAN/I2C/RTOS 或实板验收已完成。
+原始 .ioc 只启用 USART1、GPIO、RCC、SYS；TIM4 是 HAL 时基。后续提交已在 CMake/HAL 层加入 CAN、I2C HAL 驱动和 FreeRTOS 内核/任务，但 .ioc 尚未记录这些设置，也没有完成 CAN1/I2C1/舵机 PWM 的引脚初始化；MPU6050/SG90 的器件模块正在补充。硬件验收仍未完成。
 
 F411CEU6 尚未放入对应 CubeMX 工程。迁移时必须为 F411 重新生成时钟和引脚配置，再把 F411 的 UART/TIM 句柄传给同一 HAL port 接口；具体外设实例须以你的 F411 .ioc 为准。

@@ -22,6 +22,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "bsp_f103_board_c_api.h"
+#include "application/freertos_api.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -91,6 +92,10 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   if (FW_Board_Init() != 0)
+  {
+    Error_Handler();
+  }
+  if (FW_App_StartScheduler() != 0)
   {
     Error_Handler();
   }

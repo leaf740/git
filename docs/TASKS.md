@@ -10,4 +10,4 @@
 
 任务表还需在 CubeMX 的 FreeRTOS 配置里真正创建任务和队列，框架骨架没有假装任务已经启动。ISR 中只使用 FromISR API；DMA buffer 在完成回调前必须保持有效。共享数据优先消息队列，禁止在高优先级控制任务里打印。
 
-现有 F103 .ioc 尚未启用 FreeRTOS，任务配置目前是设计表，尚未创建/运行。等 CubeMX 打开 FreeRTOS middleware 后，按上表把任务与队列落到具体工程。
+F103 工程现已在 CMake 中手动集成 FreeRTOS Cortex-M3 GCC 内核和实际任务入口；CubeMX .ioc 文件本身仍未记录 FreeRTOS middleware，若以后用 CubeMX 重生成，需要保留 FreeRTOSConfig.h、CMake 源列表及 IRQ handler 交接修改。任务可以编译链接，需上板确认调度节拍和栈余量。
