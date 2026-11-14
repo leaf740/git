@@ -20,6 +20,6 @@ Git 时间必须反映真实工作。本次提交只记录当前建好的框架�
 ## 本次仓库进度
 
 - 第 1 天：已生成并核对 F103C8T6 CubeMX 工程配置。
-- 第 2 天：框架 C++17 源文件已接进该工程 CMake；当前环境对 5 个新增 C++ 单元和 CubeMX main.c 的 Arm GCC 编译通过。完整 Ninja 构建待 PATH 中有 Ninja 后重新配置；旧 build cache 指向搬动前路径。
-- 第 3 天：USART1 BSP 已接入启动日志；尚待 J-Link/Ozone 实板下载和串口确认。
+- 第 2 天：框架 C++17 源文件已接进工程；5 个新增 C++ 单元和 CubeMX main.c 编译通过，随后 Ninja 全量构建/链接 28 步成功。旧 build cache 指向搬动前路径，已使用新的 build/f103-debug。
+- 第 3 天：USART1 BSP 已接入启动日志；Ozone 项目文件已创建并打开；尚待目标板下载和串口实测。
 - F103 的 CAN、I2C、FreeRTOS 尚未在 .ioc 中配置；F411 工程、采购器件清单及硬件验证待补。

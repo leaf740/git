@@ -4,3 +4,4 @@ cmake-build-*/
 *.hex
 *.bin
 *.map
+*.jdebug.user

@@ -1,0 +1,8 @@
+/* Ozone project for the STM32F103C8T6 CubeMX build. */
+void OnProjectLoad (void) {
+  Project.SetDevice ("STM32F103C8");
+  Project.SetHostIF ("USB", "0");
+  Project.SetTargetIF ("SWD");
+  Project.SetTIFSpeed ("2 MHz");
+  File.Open ("build/f103-debug/testwork.stm.elf");
+}

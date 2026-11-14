@@ -11,7 +11,7 @@
 
 ## 构建与 Ozone 烧录
 
-当前 build/Debug/CMakeCache.txt 记录了旧工程路径 d:/STM32/testwork.stm，不能复用。建议先安装并加入 PATH：Arm GNU Toolchain、CMake、Ninja、SEGGER J-Link 软件包。然后在 PowerShell：
+旧 build/Debug 缓存记录的是搬动前的路径 d:/STM32/testwork.stm，不能复用；本次用 build/f103-debug 新目录完成了全量构建。命令记录如下（Arm GCC/CMake/Ninja 需在 PATH）：
 
 ```powershell
 cd D:\testwork1\testwork.stm
@@ -19,7 +19,7 @@ cmake -S . -B build/f103-debug -G Ninja "-DCMAKE_TOOLCHAIN_FILE:FILEPATH=cmake/g
 cmake --build build/f103-debug
 ```
 
-编译成功后，在 Ozone 新建项目，目标选 STM32F103C8，调试探针选 J-Link / SWD，程序文件选 build/f103-debug/testwork.stm.elf，执行下载并调试。观察 main、FW_Board_Init 和 HAL_TIM_PeriodElapsedCallback；串口终端设 115200 8-N-1，预期看到 “framework initialized” 和 “STM32F103C8T6 ready”，PC13 LED 约每 0.5 秒变化一次。具体 ELF 名称以 build 目录产物为准。
+编译成功后，已附 Ozone 项目文件 testwork.stm/ozone_f103.jdebug，里面配置目标 STM32F103C8、J-Link USB、SWD 2 MHz 和 ELF 路径。构建后双击打开该文件，连接目标并选择 Download and Debug。观察 main、FW_Board_Init 和 HAL_TIM_PeriodElapsedCallback；串口终端设 115200 8-N-1，预期看到 “framework initialized” 和 “STM32F103C8T6 ready”，PC13 LED 约每 0.5 秒变化一次。具体 ELF 名称以 build 目录产物为准。
 
 ## 当前限制
 
