@@ -12,3 +12,8 @@ STM32F103C8T6 与 STM32F411CEU6 都支持 bxCAN 和常见 UART HAL 操作。时�
 CubeMX 负责初始化代码；VS Code 配 C/C++ 和 CMake Tools；安装 Arm GNU Toolchain、CMake、Ninja 和 STM32CubeProgrammer；ST-Link 用于烧录/单步调试。个人工具路径放本机配置，不要提交绝对路径。Ozone 的工程配置保存为本机 .jdebug 时，不要提交含本机绝对路径的个人设置；可提供不含个人路径的模板。当前仓库没有 .ioc、启动文件、链接脚本和 HAL 包，顶层 CMake 只构建核心，不能独自生成可烧录 ELF。
 
 F103 的 CAN 引脚可能与其他功能复用；核对板卡原理图和 AFIO remap。F411 的 DMA stream/IRQ 必须重新由 CubeMX 配置。若目标 MCU 使用 FDCAN，应新增同接口 adapter。
+
+## SEGGER 官方资料
+
+- Ozone 入门向导（选择目标设备、J-Link 连接和 ELF）：https://www.segger.com/products/development-tools/ozone-j-link-debugger/technology/getting-started-with-ozone/
+- Ozone 工具链说明（支持外部工具链 ELF、下载和源码级调试）：https://www.segger.com/products/development-tools/ozone-j-link-debugger/technology/compiler-support/
