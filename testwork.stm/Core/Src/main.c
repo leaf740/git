@@ -95,6 +95,10 @@ int main(void)
   {
     Error_Handler();
   }
+  if (FW_App_Init(FW_Board_I2cBus(), FW_Board_CanBus(), FW_Board_ServoPwm()) != 0)
+  {
+    Error_Handler();
+  }
   if (FW_App_StartScheduler() != 0)
   {
     Error_Handler();

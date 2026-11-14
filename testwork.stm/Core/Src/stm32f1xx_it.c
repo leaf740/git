@@ -56,6 +56,10 @@
 
 /* External variables --------------------------------------------------------*/
 extern TIM_HandleTypeDef htim4;
+extern CAN_HandleTypeDef hcan1;
+extern I2C_HandleTypeDef hi2c1;
+extern DMA_HandleTypeDef hdma_i2c1_tx;
+extern DMA_HandleTypeDef hdma_i2c1_rx;
 
 /* USER CODE BEGIN EV */
 
@@ -187,6 +191,12 @@ void TIM4_IRQHandler(void)
 
   /* USER CODE END TIM4_IRQn 1 */
 }
+
+void CAN1_TX_IRQHandler(void) { HAL_CAN_IRQHandler(&hcan1); }
+void I2C1_EV_IRQHandler(void) { HAL_I2C_EV_IRQHandler(&hi2c1); }
+void I2C1_ER_IRQHandler(void) { HAL_I2C_ER_IRQHandler(&hi2c1); }
+void DMA1_Channel6_IRQHandler(void) { HAL_DMA_IRQHandler(&hdma_i2c1_tx); }
+void DMA1_Channel7_IRQHandler(void) { HAL_DMA_IRQHandler(&hdma_i2c1_rx); }
 
 /* USER CODE BEGIN 1 */
 

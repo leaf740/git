@@ -4,9 +4,9 @@
 
 |物资|模块/总线|建议 F103 引脚|配置|当前状态|
 |---|---|---|---|---|
-|MPU6050|Module/Mpu6050，I2C1|PB6=SCL、PB7=SDA|7-bit 地址默认 0x68（AD0 高时构造参数设 0x69）；WHO_AM_I 校验；±2g/±250 dps；125 Hz|驱动已编写，板级初始化/实测待完成|
-|TJA1050|Module/Tja1050Link + BSP bxCAN|PA12=CAN_TX→TXD；RXD→PA11=CAN_RX|CAN1 500 kbit/s 建议值；标准/扩展帧|链路包装已编写，板级初始化/对端收发待完成|
-|SG90 9g|Module/Sg90Servo，TIM PWM|PA0=TIM2_CH1|50 Hz，默认脉宽 1000–2000 us 可配置，初始化置中|模块已编写，TIM2 初始化/实测待完成|
+|MPU6050|Module/Mpu6050，I2C1|PB6=SCL、PB7=SDA|7-bit 地址默认 0x68（AD0 高时构造参数设 0x69）；WHO_AM_I 校验；±2g/±250 dps；125 Hz|BSP I2C 初始化和模块初始化/采样已接入；实物读数待验证|
+|TJA1050|Module/Tja1050Link + BSP bxCAN|PA12=CAN_TX→TXD；RXD→PA11=CAN_RX|CAN1 500 kbit/s 建议值；标准/扩展帧|BSP CAN 初始化和统一收发封装已接入；需第二节点验证总线|
+|SG90 9g|Module/Sg90Servo，TIM PWM|PA0=TIM2_CH1|50 Hz，默认脉宽 1000–2000 us 可配置，初始化置中|TIM2 PWM、舵机初始化和置中命令已接入；脉宽需按实物校准|
 
 ## 接线和供电要点
 
@@ -16,3 +16,5 @@
 - SG90 电机不要由 MCU 3.3 V 引脚供电。按原厂规格用 4.8 V 伺服电源，伺服电源与 STM32 共地，信号线接 PA0。先让机械连杆脱开或舵盘置中，再测试端点；不同 SG90 仿品端点脉宽可能不同，驱动允许调整区间。[TowerPro SG90](https://towerpro.com.tw/product/sg90-analog/)。
 
 具体供电模块/接插件未列在清单中，所以电源板、模块电平、CAN 总线对端与终端位置仍需按实物确认。
+
+CAN1、I2C1、TIM2 由 `BSP/boards/stm32f103c8t6/peripherals.cpp` 手动初始化，当前没有同步进 CubeMX `.ioc`。工程完成主机编译链接，但这不代表已在实体板上验证信号或外设。
