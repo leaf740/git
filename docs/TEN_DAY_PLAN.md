@@ -16,3 +16,10 @@ Git 时间必须反映真实工作。本次提交只记录当前建好的框架�
 |10|整理接线、构建和调试指南并复现|docs: finish bring-up and migration guide|
 
 每天提交：git status → git diff → git add 相关文件 → git commit -m "标题"。提交前检查暂存差异，排除个人绝对路径和临时文件。
+
+## 本次仓库进度
+
+- 第 1 天：已生成并核对 F103C8T6 CubeMX 工程配置。
+- 第 2 天：框架 C++17 源文件已接进该工程 CMake；当前环境对 5 个新增 C++ 单元和 CubeMX main.c 的 Arm GCC 编译通过。完整 Ninja 构建待 PATH 中有 Ninja 后重新配置；旧 build cache 指向搬动前路径。
+- 第 3 天：USART1 BSP 已接入启动日志；尚待 J-Link/Ozone 实板下载和串口确认。
+- F103 的 CAN、I2C、FreeRTOS 尚未在 .ioc 中配置；F411 工程、采购器件清单及硬件验证待补。

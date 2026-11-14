@@ -11,3 +11,5 @@ VS Code、CMake、Ninja、Arm GCC、J-Link + Ozone 工作流见 docs/PORTING.md�
 ## Commit 约定
 
 每日完成一项后按 docs/TEN_DAY_PLAN.md 建立提交；当前实现的接口骨架单独提交，所有提交使用实际创建时间。
+
+当前已接入的 CubeMX 工程和 USART1/TIM4 验收步骤见 [F103C8T6 工程记录](docs/BOARD_F103C8T6.md)。
